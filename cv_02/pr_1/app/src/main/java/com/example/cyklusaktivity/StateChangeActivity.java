@@ -67,11 +67,17 @@ public class StateChangeActivity extends AppCompatActivity {
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         Log.i(LAD, "onSaveInstanceState");
+        final EditText textBox =(EditText) findViewById(R.id.editText);
+        CharSequence sText = textBox.getText();
+        outState.putCharSequence("UlozenyText", sText);
     }
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
         Log.i(LAD, "onRestoreInstanceState");
+        final EditText textBox = (EditText) findViewById(R.id.editText);
+        CharSequence sText = savedInstanceState.getCharSequence("UlozenyText");
+        textBox.setText(sText);
     }
 
         @Override
